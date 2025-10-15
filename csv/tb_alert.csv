@@ -1,0 +1,5 @@
+id,alertname,colour,details
+1001,"Yellow","Yellow","Moderate concern, minor health impact for sensitive groups"
+1002,"Orange","Orange","High concern, health risk for sensitive groups"
+1003,"Red","Red","Serious concern, health warnings for general population"
+1004,"Crimson","Dark Red","Very high concern, emergency conditions for all populations"
