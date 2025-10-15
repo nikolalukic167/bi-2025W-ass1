@@ -18,9 +18,9 @@ CREATE DATABASE airq;
 -- -------------------------------
 -- 2. Create the "student group" role (replace xxx with your three-digit group number). You can choose your own password for your role or just use this simple '123' password.
 -- -------------------------------
-DROP ROLE IF EXISTS grp_xxx;
-CREATE ROLE grp_xxx LOGIN PASSWORD '123';
-GRANT CONNECT, CREATE ON DATABASE airq TO grp_xxx;
+DROP ROLE IF EXISTS grp_006;
+CREATE ROLE grp_006 LOGIN PASSWORD '123';
+GRANT CONNECT, CREATE ON DATABASE airq TO grp_006;
 
 -- -------------------------------
 -- 3. Lock down the default public, so that we do not accidentally create objects there
