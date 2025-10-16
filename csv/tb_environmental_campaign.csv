@@ -1,0 +1,8 @@
+campaign_id,campaign_name,campaign_type,start_date,end_date,responsible_agency,budget_million_eur
+1,Clean Air Vienna 2023,Awareness,2023-03-01,2023-03-31,Vienna Environmental Dept,0.25
+2,Industrial Emission Reduction,Regulation,2024-01-01,2025-01-01,EU Env. Agency,5.4
+3,Sensor Upgrade Pilot,Research,2024-07-01,2024-09-30,TechLab Europe,1.2
+4,Anti-Smog Winter Plan,Regulation,2023-11-01,2024-03-31,City Council Warsaw,2.1
+5,EcoSchools Initiative,Awareness,2024-09-01,2025-06-30,GreenFuture NGO,0.6
+6,CarbonZero 2030,Regulation,2025-01-01,2030-12-31,EU Commission,50.0
+7,Smart Mobility Push,Awareness,2024-04-01,2024-10-31,City of Prague,1.0

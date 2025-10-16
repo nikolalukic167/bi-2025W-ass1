@@ -1,0 +1,18 @@
+campaign_id,city_name,country_name,impact_level,effectiveness_score,monitoring_required
+1,Vienna,Austria,High,4.5,True
+1,Linz,Austria,Medium,3.9,True
+1,Graz,Austria,Medium,3.7,False
+2,Berlin,Germany,High,4.2,True
+2,Paris,France,High,4.8,True
+2,Madrid,Spain,Medium,3.6,True
+3,Vienna,Austria,Medium,3.7,False
+3,Budapest,Hungary,Low,2.5,False
+4,Warsaw,Poland,High,4.9,True
+4,Krakow,Poland,Medium,4.1,True
+5,Zagreb,Croatia,Medium,3.2,False
+5,Ljubljana,Slovenia,Low,2.7,False
+6,Vienna,Austria,High,4.6,True
+6,Paris,France,High,4.8,True
+6,Rome,Italy,High,4.4,True
+7,Prague,Czech Republic,Medium,3.9,True
+7,Brno,Czech Republic,Low,3.0,False
