@@ -1,9 +1,5 @@
--- Make A1 dwh_006, stg_006 schemas the default for this session
 SET search_path TO dwh_006, stg_006;
 
--- =======================================
--- Check [dim_service_type count matches staging tb_servicetype]
--- =======================================
 WITH dwh_st AS 
 (
   SELECT '006' AS group_num

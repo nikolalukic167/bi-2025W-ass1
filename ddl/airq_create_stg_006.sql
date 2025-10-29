@@ -1,9 +1,5 @@
--- Make the A1's stg_xxx schema the default for this session
-SET search_path TO stg_006; -- valjda ovdje treba 006? nisam sig
+SET search_path TO stg_006;
 
--- ===========================================================
--- 1) DROP TABLES (reverse dependency order)
--- ===========================================================
 DROP TABLE IF EXISTS tb_serviceevent;
 DROP TABLE IF EXISTS tb_readingevent;
 DROP TABLE IF EXISTS tb_weather;
@@ -13,7 +9,6 @@ DROP TABLE IF EXISTS tb_paramsensortype;
 DROP TABLE IF EXISTS tb_employee;
 DROP TABLE IF EXISTS tb_city;
 
--- Parents last
 DROP TABLE IF EXISTS tb_sensortype;
 DROP TABLE IF EXISTS tb_param;
 DROP TABLE IF EXISTS tb_alert;
@@ -22,12 +17,6 @@ DROP TABLE IF EXISTS tb_servicetype;
 DROP TABLE IF EXISTS tb_role;
 DROP TABLE IF EXISTS tb_country;
 
--- ===========================================================
--- 2) CREATE TABLES (dependency-safe order)
---    Parents first → children later
--- ===========================================================
-
--- Parents (no FKs)
 CREATE TABLE tb_country (
     id INT NOT NULL PRIMARY KEY,
     countryname VARCHAR(255) NOT NULL,
@@ -37,8 +26,8 @@ CREATE TABLE tb_country (
 
 CREATE TABLE tb_role (
     id INT NOT NULL PRIMARY KEY,
-    rolelevel INT NOT NULL,                           -- 1-Entry, 2-Junior, 3-Senior, 4-Lead
-    category VARCHAR(255) NOT NULL,                   -- 'Hardware','Software','Diagnostics','Calibration'
+    rolelevel INT NOT NULL, 
+    category VARCHAR(255) NOT NULL,
     rolename VARCHAR(255) NOT NULL,
     CHECK (rolelevel IN (1, 2, 3, 4)),
     CHECK (category IN ('Hardware','Software','Diagnostics','Calibration')),
@@ -48,8 +37,8 @@ CREATE TABLE tb_role (
 CREATE TABLE tb_servicetype (
     id INT NOT NULL PRIMARY KEY,
     typename VARCHAR(255) NOT NULL,
-    category VARCHAR(255) NOT NULL,                   -- 'Hardware','Software','Diagnostics','Calibration'
-    minlevel INT NOT NULL,                            -- 1..4
+    category VARCHAR(255) NOT NULL,
+    minlevel INT NOT NULL,
     servicegroup VARCHAR(255) NOT NULL,
     details VARCHAR(255) NOT NULL,
     CHECK (minlevel IN (1, 2, 3, 4)),
@@ -59,7 +48,7 @@ CREATE TABLE tb_servicetype (
 CREATE TABLE tb_readingmode (
     id INT NOT NULL PRIMARY KEY,
     modename VARCHAR(255) NOT NULL,
-    latency INT NOT NULL,                             -- 1,2,5,10 seconds
+    latency INT NOT NULL,
     validfrom DATE NOT NULL,
     validto DATE NULL,
     details VARCHAR(255) NOT NULL,
@@ -69,8 +58,8 @@ CREATE TABLE tb_readingmode (
 
 CREATE TABLE tb_alert (
     id INT NOT NULL PRIMARY KEY,
-    alertname VARCHAR(255) NOT NULL,                  -- Yellow, Orange, Red, Crimson
-    colour VARCHAR(255) NOT NULL,                     -- Yellow, Orange, Red, Dark Red
+    alertname VARCHAR(255) NOT NULL,
+    colour VARCHAR(255) NOT NULL,
     details VARCHAR(255) NOT NULL,
     CONSTRAINT uc_alert_alertname UNIQUE (alertname)
 );
@@ -95,7 +84,6 @@ CREATE TABLE tb_sensortype (
     CHECK (technology IN ('Optical','Electrochemical','Laser'))
 );
 
--- Children of parents above (introduce FKs)
 CREATE TABLE tb_city (
     id INT NOT NULL PRIMARY KEY,
     countryid INT NOT NULL,
@@ -110,9 +98,9 @@ CREATE TABLE tb_city (
 CREATE TABLE tb_employee (
     id INT NOT NULL PRIMARY KEY,
     roleid INT NOT NULL,
-    badgenumber VARCHAR(255) NOT NULL,                -- role assignments over time for a badge
+    badgenumber VARCHAR(255) NOT NULL,
     validfrom DATE NOT NULL,
-    validto DATE NULL,                                -- last role has validto = NULL
+    validto DATE NULL,
     CONSTRAINT fk_employee_roleid FOREIGN KEY (roleid) REFERENCES tb_role(id)
 );
 
@@ -153,7 +141,7 @@ CREATE TABLE tb_sensordevice (
 CREATE TABLE tb_weather (
     id INT NOT NULL PRIMARY KEY,
     cityid INT NOT NULL,
-    observedat DATE NOT NULL,                         -- YYYY-MM-DD
+    observedat DATE NOT NULL,
     tempdaymin DECIMAL(6,1) NULL,
     tempdaymax DECIMAL(6,1) NULL,
     tempdayavg DECIMAL(6,1) NULL,
@@ -165,7 +153,6 @@ CREATE TABLE tb_weather (
     CONSTRAINT uc_city_observedat UNIQUE (cityid, observedat)
 );
 
--- Deepest dependents last
 CREATE TABLE tb_readingevent (
     id INT NOT NULL PRIMARY KEY,
     sensordevid INT NOT NULL,
@@ -174,7 +161,7 @@ CREATE TABLE tb_readingevent (
     readat DATE NOT NULL,
     recordedvalue DECIMAL(10,4) NOT NULL,
     datavolumekb INT NOT NULL,
-    dataquality INT NOT NULL,                         -- (1..5)
+    dataquality INT NOT NULL,
     CHECK (dataquality BETWEEN 1 AND 5),
     CONSTRAINT fk_readingevent_sensordevid FOREIGN KEY (sensordevid) REFERENCES tb_sensordevice(id),
     CONSTRAINT fk_readingevent_paramid FOREIGN KEY (paramid) REFERENCES tb_param(id),
@@ -187,9 +174,9 @@ CREATE TABLE tb_serviceevent (
     employeeid INT NOT NULL,
     sensordevid INT NOT NULL,
     servicedat DATE NOT NULL,
-    servicecost INT NOT NULL,                         -- cost metric
-    durationminutes INT NOT NULL,                     -- duration metric
-    servicequality INT NOT NULL,                      -- (1..5)
+    servicecost INT NOT NULL,
+    durationminutes INT NOT NULL,
+    servicequality INT NOT NULL,
     CHECK (servicecost >= 0),
     CHECK (durationminutes >= 0),
     CHECK (servicequality BETWEEN 1 AND 5),

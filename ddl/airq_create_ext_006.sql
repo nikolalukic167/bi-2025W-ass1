@@ -1,15 +1,6 @@
--- =============================================================
--- Extensions DDL (Tables X and Y) for staging schema stg_006
--- tb_environmental_campaign (entity) and tb_campaign_city (bridge)
--- =============================================================
-
 CREATE SCHEMA IF NOT EXISTS stg_006;
 SET search_path TO stg_006;
 
--- -------------------------------------------------------------
--- Table_X: Environmental Campaigns (entity)
--- CSV: data/tb_environmental_campaign.csv
--- -------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS tb_environmental_campaign (
     campaign_id           INTEGER PRIMARY KEY,
     campaign_name         TEXT        NOT NULL,
@@ -25,14 +16,8 @@ COMMENT ON TABLE tb_environmental_campaign IS
 'Manually created Table_X (entity) listing environmental/policy/awareness campaigns.';
 
 
--- -------------------------------------------------------------
--- Table_Y: Campaign–City bridge
--- CSV: data/tb_campaign_city.csv
--- Loads by natural keys (city_name, country_name); city_id resolved post-load.
--- -------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS tb_campaign_city (
     campaign_id           INTEGER     NOT NULL,
-    -- resolved later from stg_006.city + stg_006.country
     city_id               INTEGER     NULL,
     city_name             TEXT        NOT NULL,
     country_name          TEXT        NOT NULL,
