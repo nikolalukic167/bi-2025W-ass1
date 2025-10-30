@@ -1,0 +1,202 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage[english, bidi=basic, provide=*]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\babelfont{rm}{Noto Sans}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={BI Assignment 1 Report},
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{flushleft}
+        \includegraphics[width=4cm]{tu_wien_logo.png}
+    \end{flushleft}
+    
+    \centering
+    
+    \vspace*{1cm}
+    
+    {\Large TECHNISCHE UNIVERSITAT WIEN\par}
+    
+    \vspace{1.5cm}
+    
+    {\huge \textbf{Business Intelligence VU}\par}
+    {\Large 188.429\par}
+    
+    \vspace{2cm}
+    
+    {\Huge \textbf{Assignment 1:}\par}
+    {\Huge \textbf{Dimensional Modelling and ETL}\par}
+    
+    \vfill
+    
+    \textbf{Group:} 006 \par
+    \vspace{0.5cm}
+    \textbf{Student A:} Kerim Halilović, 12434665 \par
+    \textbf{Student B:} Nikola Lukić, \par
+    
+    \vspace{1.5cm}
+    
+    \textbf{Date of Submission:} \today \par
+
+\end{titlepage}
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+
+\section{Synthetic Tables (Table\_X and Table\_Y)}
+
+To enrich the provided OLTP data, we introduced two synthetic tables to model the impact of environmental campaigns on air quality and operational metrics.
+
+\subsection{Table\_X: \texttt{tb\_environmental\_campaign}}
+This table stores the details of all environmental, regulatory, or awareness campaigns. Each row represents a unique initiative, defining its scope, duration, and budget.
+
+\begin{table}[h!]
+\centering
+\caption{Field Descriptions for \texttt{tb\_environmental\_campaign}}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Column Name} & \textbf{Data Type} & \textbf{Description} \\ \midrule
+campaign\_id & INTEGER & Surrogate primary key. \\
+campaign\_name & TEXT & The official name of the campaign. \\
+campaign\_type & TEXT & Category (e.g., 'Awareness', 'Regulation'). \\
+start\_date & DATE & The date the campaign officially began. \\
+end\_date & DATE & The date the campaign ended (nullable). \\
+responsible\_agency & TEXT & The organization leading the campaign. \\
+budget\_million\_eur & NUMERIC(10,2) & The allocated budget in millions of Euros. \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Table\_Y: \texttt{tb\_campaign\_city}}
+This bridge table creates a many-to-many relationship between campaigns (\texttt{tb\_environmental\_campaign}) and the existing OLTP table \texttt{tb\_city}. This allows a single campaign to target multiple cities, and a city to participate in multiple campaigns.
+
+\subsection{Integration into OLAP Schema}
+Data from \texttt{tb\_environmental\_campaign} is loaded directly into the \texttt{dim\_campaign} dimension. The bridge table, \texttt{tb\_campaign\_city}, is used during the ETL process for the fact tables to determine which campaign (if any) was active in a given city on a specific date.
+
+\section{Business/Analytic Questions}
+
+The following business questions were formulated to guide the design of our star schema.
+
+\subsection{Student A - Kerim Halilović}
+\begin{enumerate}
+    \item How did average pollution levels change in cities participating in campaigns compared to those that did not?
+    \item Which campaign types (Awareness vs. Regulation) achieved the highest effectiveness scores?
+    \item Is there a correlation between campaign budget and observed improvement in air quality?
+    \item During which months do cities most frequently launch environmental campaigns?
+\end{enumerate}
+
+\subsection{Student B - Nikola Lukić}
+\begin{enumerate}
+    \item Do cities with higher campaign activity require fewer maintenance services per device?
+    \item Which sensor manufacturers operate most frequently in cities with active campaigns?
+    \item How does service cost vary between cities with and without ongoing campaigns?
+    \item Are underqualified technician assignments more common during campaign periods?
+\end{enumerate}
+
+\section{Star Schema Diagram}
+
+The figure below illustrates the final star schema, consisting of two fact tables and eight dimension tables. The diagram shows the relationships and keys for all tables in the \texttt{dwh\_006} schema.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.0\textwidth]{AirQ_ERD_dwh_006.png}
+    
+    \caption{Star Schema for the Air Quality Data Warehouse.}
+    \label{fig:er_diagram}
+\end{figure}
+
+\section{Fact Tables}
+
+\subsection{Fact 1: \texttt{ft\_reading\_daily}}
+\begin{itemize}
+    \item \textbf{Primary Responsibility:} Student A - Kerim Halilović
+    \item \textbf{Business Motivation:} To analyze air quality trends and sensor telemetry load over time. This fact table enables comparisons of pollution metrics across different locations, device types, and during specific environmental campaigns.
+    \item \textbf{Grain:} One row per sensor device, per measured parameter, per day.
+    \item \textbf{Measures:}
+    \begin{itemize}
+        \item \texttt{cnt\_readings} (SUM)
+        \item \texttt{sum\_data\_volume\_bytes} (SUM)
+        \item \texttt{avg\_data\_quality} (AVG)
+        \item \texttt{avg\_value} (AVG)
+        \item \texttt{cnt\_exceed\_[level]} (SUM)
+    \end{itemize}
+    \item \textbf{Linked Dimensions:} \texttt{dim\_timeday}, \texttt{dim\_device}, \texttt{dim\_parameter}, \texttt{dim\_sensor\_type}, \\
+    \texttt{dim\_reading\_mode}, \texttt{dim\_campaign}.
+\end{itemize}
+
+\subsection{Fact 2: \texttt{ft\_service\_event}}
+\begin{itemize}
+    \item \textbf{Primary Responsibility:} Student B - Nikola Lukić
+    \item \textbf{Business Motivation:} To monitor operational efficiency, service costs, and technician compliance. This fact table helps track maintenance activities and analyze their cost and quality, particularly in relation to device types and campaign periods.
+    \item \textbf{Grain:} One row per service event.
+    \item \textbf{Measures:}
+    \begin{itemize}
+        \item \texttt{service\_cost\_eur} (SUM)
+        \item \texttt{service\_duration\_min} (SUM)
+        \item \texttt{service\_quality\_score} (AVG)
+        \item \texttt{underqualified\_flag} (SUM)
+    \end{itemize}
+    \item \textbf{Linked Dimensions:} \texttt{dim\_timeday}, \texttt{dim\_device} (shared), \texttt{dim\_service\_type}, \\ \texttt{dim\_technician\_role}, \texttt{dim\_campaign}.
+\end{itemize}
+
+\section{Dimension Tables}
+
+\begin{itemize}
+    \item \textbf{Hierarchies:} Three dimensions include multi-level hierarchies:
+    \begin{itemize}
+        \item \texttt{dim\_device}: Country $\rightarrow$ City $\rightarrow$ Device
+        \item \texttt{dim\_sensor\_type}: Manufacturer $\rightarrow$ Technology $\rightarrow$ Type Name
+        \item \texttt{dim\_service\_type}: Service Group $\rightarrow$ Category $\rightarrow$ Type Name
+    \end{itemize}
+    \item \textbf{Time Dimension:} We implemented a single time dimension, \texttt{dim\_timeday}, as its daily granularity is enough to answer all formulated business questions and supports analysis at higher levels (month, quarter, year) through its attributes.
+    \item \textbf{SCD Type 2:} The \texttt{dim\_technician\_role} dimension is implemented as an SCD Type 2 to track the history of roles held by each technician. Each row represents a specific role assignment with \texttt{valid\_from} and \texttt{valid\_to} dates, enabling accurate compliance checks for service events at any point in time.
+    \item \textbf{Degenerate Dimension:} The \texttt{service\_event\_code} from the source system is stored directly in \texttt{ft\_service\_event}. This makes it possible to trace each fact record back to the original source transaction without creating a separate dimension table.
+\end{itemize}
+
+\section{Snowflake vs. Star Schema}
+
+The star schema was required for this assignment and is the ideal choice for this project. By denormalizing hierarchies (such as geography into \texttt{dim\_device}), we created a schema with fewer joins, which simplifies analytical queries and improves performance. All business questions can be answered efficiently with this structure.
+
+A snowflake schema would have normalized the hierarchies into separate tables (e.g., \texttt{dim\_city}, \texttt{dim\_country}). While this might slightly reduce data redundancy in the dimension tables, it would increase query complexity by requiring additional joins. Given the performance goals of a data warehouse, the star schema's simplicity and speed are more advantageous.
+
+\section{ETL and Validation Summary}
+
+The ETL process was implemented using SQL scripts coordinated through a Jupyter Notebook. After the complete pipeline execution, 7 validation queries were executed on the \texttt{dwh\_006} schema to verify data accuracy and integrity.
+
+All 7 selected validation checks passed successfully, which confirms the ETL process loaded the data as expected. Some of the key findings from this test suite include:
+\begin{itemize}
+    \item Dimension row counts (including custom \texttt{dim\_campaign}) exactly matched their corresponding source tables.
+    \item All foreign keys in both fact tables successfully referenced existing keys in their respective dimension tables (0 mismatches).
+    \item The SCD Type 2 dimension (\texttt{dim\_technician\_role}) showed no overlapping time ranges and had exactly one current record per technician.
+    \item All measures were within their expected logical ranges (e.g., no negative costs or invalid quality scores).
+\end{itemize}
+Finally, a provenance file (\texttt{prov\_airq\_dwh\_006.jsonld}) was created to keep a detailed record of the ETL process.
+
+\section{Reflection and Lessons Learned}
+
+\subsection{Student A: Kerim Halilović}
+
+This assignment I got hands on experience with the full data warehousing process, from theory to actual implementation. The biggest challenge for me was creating the ETL process for the ft\_reading\_daily fact table. Turning raw reading events into clean daily summaries required careful grouping and calculations. The hardest part was adding the business logic for exceedance counts, which meant joining the readings with alert thresholds and correctly labeling each case. This showed me that ETL is not just about moving data but also about transforming it to create new and useful information.
+
+I also realized how important it is to design a clear and detailed schema before writing any code. Having the star schema ready made it much easier to build the ETL scripts. The validation step was also very important, running checks on data links and value ranges helped confirm that our transformations were correct. Overall, this project taught me that the quality and reliability of a data warehouse depend entirely on how accurate and consistent its data is.
+
+\subsection{Student B: Nikola Lukić}
+
+My main lesson from this project is how important it is to model time and history correctly. When designing the ft\_service\_event fact table, I realized that linking each service only to the current employee role wasn’t enough. To answer our business question about underqualified service, we needed to know what role the technician had at the time of the service. This led us to create the dim\_technician\_role table as a Slowly Changing Dimension (SCD) Type 2. Writing the ETL for this and joining it correctly in the fact table using the event date between valid\_from and valid\_to was the hardest but also the most rewarding part.
+
+The project also showed me how valuable teamwork and shared design are. Since our dim\_device and dim\_campaign tables were shared between multiple fact tables, we had to agree early on how they would look and how the data would be loaded. This collaboration made combining our different parts much easier later on. Finally, building validation scripts, like checking the underqualified\_flag logic taught me that validation is not just about checking record counts; it’s about making sure the data warehouse truly answers the business questions it was designed for.
+
+
+\end{document}

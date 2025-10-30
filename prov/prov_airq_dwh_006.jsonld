@@ -1,0 +1,553 @@
+{
+  "@context": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "file:csv/tb_alert.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_alert.csv",
+      "dct:format": "text/csv",
+      "contentHash": "71010ed19fe40c7b53cb87b0f7d8e4e32b79f9c472a37030b076e4aa7f3c1682"
+    },
+    {
+      "@id": "oltp://tb_campaign_city",
+      "@type": "prov:Entity",
+      "dct:title": "tb_campaign_city",
+      "dct:format": "text/csv"
+    },
+    {
+      "@id": "file:csv/tb_city.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_city.csv",
+      "dct:format": "text/csv",
+      "contentHash": "1dff80d0e34558a9adb2a0524a7e234280ea67bf8a7310bc32378a1a96f07530"
+    },
+    {
+      "@id": "file:csv/tb_country.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_country.csv",
+      "dct:format": "text/csv",
+      "contentHash": "7d205d5ea3112b8b053d2c117665a1b87499bd426d5d58c3ded8cd9c9dfdc475"
+    },
+    {
+      "@id": "file:csv/tb_employee.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_employee.csv",
+      "dct:format": "text/csv",
+      "contentHash": "ef28b582ef29fd2626eec4710e709d938580a5d195da4d3cfb516b49115cb26a"
+    },
+    {
+      "@id": "oltp://tb_environmental_campaign",
+      "@type": "prov:Entity",
+      "dct:title": "tb_environmental_campaign",
+      "dct:format": "text/csv"
+    },
+    {
+      "@id": "file:csv/tb_param.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_param.csv",
+      "dct:format": "text/csv",
+      "contentHash": "4190e2a1b24d62390c6bd464271617029c0648ed9c420dfa8abc1c7c59555b15"
+    },
+    {
+      "@id": "file:csv/tb_paramalert.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_paramalert.csv",
+      "dct:format": "text/csv",
+      "contentHash": "d8da560f83d09dd7cab12c3d84078b1bea605ab6c0e727ae9f47777269891826"
+    },
+    {
+      "@id": "file:csv/tb_readingevent.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_readingevent.csv",
+      "dct:format": "text/csv",
+      "contentHash": "fe1f8efce86a0c08d7c4a7bec96ea6e4a69d54257ed486ba15b0bbffbe5ae022"
+    },
+    {
+      "@id": "file:csv/tb_readingmode.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_readingmode.csv",
+      "dct:format": "text/csv",
+      "contentHash": "1809b75c0b6c73e685f0f2f4260485f28ed26683295067a49f00191abf61cfe4"
+    },
+    {
+      "@id": "file:csv/tb_role.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_role.csv",
+      "dct:format": "text/csv",
+      "contentHash": "0a18c7a44bbbacfb48c8e3b41f3ee0faa73e2203fd99a5490658cac7991645af"
+    },
+    {
+      "@id": "file:csv/tb_sensordevice.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_sensordevice.csv",
+      "dct:format": "text/csv",
+      "contentHash": "3e57052122a45c0217a067eac7b7e5af4e6a6524fa06e4faf707273eaca959e8"
+    },
+    {
+      "@id": "file:csv/tb_sensortype.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_sensortype.csv",
+      "dct:format": "text/csv",
+      "contentHash": "e792690eac6693bdc3086650c4d78fe742b6c11c562807a5ce6b4f34ae412d13"
+    },
+    {
+      "@id": "file:csv/tb_serviceevent.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_serviceevent.csv",
+      "dct:format": "text/csv",
+      "contentHash": "d8ba76c8a64a77c28820b196a43af49b709654c1e7a92b6343f58eb653daaf48"
+    },
+    {
+      "@id": "file:csv/tb_servicetype.csv",
+      "@type": "prov:Entity",
+      "dct:title": "tb_servicetype.csv",
+      "dct:format": "text/csv",
+      "contentHash": "4f863b48dbdb7e2960c40ee1ef3b883f148fcbd6ac24505c66699fe4ab257e98"
+    },
+    {
+      "@id": "file:etl/a1_etl00_ext_campaign_city_resolve.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl00_ext_campaign_city_resolve.sql",
+      "dct:format": "text/sql",
+      "contentHash": "4ec35ad7e6c9a01b3913aa4b3780c03a98f5f9f1bf1898c1e51c423a8c3cc9e0"
+    },
+    {
+      "@id": "file:etl/a1_etl01_dim_timeday.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl01_dim_timeday.sql",
+      "dct:format": "text/sql",
+      "contentHash": "ec71e327fedc302c9a72cb698a2f95b936b5b53627c0464e0d812dd35bb6d223"
+    },
+    {
+      "@id": "file:etl/a1_etl02_dim_servicetype.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl02_dim_servicetype.sql",
+      "dct:format": "text/sql",
+      "contentHash": "e680095588e25c2446431eeacb036f3622d94362ba849ed178642a2fb2db1176"
+    },
+    {
+      "@id": "file:etl/a1_etl03_dim_parameter.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl03_dim_parameter.sql",
+      "dct:format": "text/sql",
+      "contentHash": "510e28ec5e3835043f875047b27add962d0fb9eedb80eba2c5fc77f3201eafbd"
+    },
+    {
+      "@id": "file:etl/a1_etl04_dim_technician_role_scd2.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl04_dim_technician_role_scd2.sql",
+      "dct:format": "text/sql",
+      "contentHash": "29f4387d322c9740d84017f8241329c9f50b741353326b02bc6f77867edbdfc1"
+    },
+    {
+      "@id": "file:etl/a1_etl05_dim_device.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl05_dim_device.sql",
+      "dct:format": "text/sql",
+      "contentHash": "f9759e2fee42ea272e427a21f8027acf7aa4cc3d8fdd4fb110d700d3a28c98cb"
+    },
+    {
+      "@id": "file:etl/a1_etl06_ft_name1.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl06_ft_name1.sql",
+      "dct:format": "text/sql",
+      "contentHash": "713110f35c9b02d53fefd5fba406de7a7f6e1d26efedbc531f2f0d3b017947ec"
+    },
+    {
+      "@id": "file:etl/a1_etl07_ft_name2.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl07_ft_name2.sql",
+      "dct:format": "text/sql",
+      "contentHash": "ea8ececf2d670a880a9256c8e3ecae6ae8d4a0c0aacd7a8903775cd4a79a6ba9"
+    },
+    {
+      "@id": "file:etl/a1_etl08_ft_service_event.sql",
+      "@type": [
+        "prov:Entity",
+        "prov:Plan"
+      ],
+      "dct:title": "a1_etl08_ft_service_event.sql",
+      "dct:format": "text/sql",
+      "contentHash": "c2f50157ee505ff0b121797bcee12eb7f7055e9d1edef5753a11597698aa3fc0"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_campaign",
+      "@type": "prov:Entity",
+      "dct:title": "dim_campaign",
+      "rowCount": 8
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device",
+      "@type": "prov:Entity",
+      "dct:title": "dim_device",
+      "rowCount": 627
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_parameter",
+      "@type": "prov:Entity",
+      "dct:title": "dim_parameter",
+      "rowCount": 30
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_reading_mode",
+      "@type": "prov:Entity",
+      "dct:title": "dim_reading_mode",
+      "rowCount": 0
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_sensor_type",
+      "@type": "prov:Entity",
+      "dct:title": "dim_sensor_type",
+      "rowCount": 0
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_servicetype",
+      "@type": "prov:Entity",
+      "dct:title": "dim_servicetype",
+      "rowCount": 24
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_technician_role",
+      "@type": "prov:Entity",
+      "dct:title": "dim_technician_role",
+      "rowCount": 484
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_timeday",
+      "@type": "prov:Entity",
+      "dct:title": "dim_timeday",
+      "rowCount": 2922
+    },
+    {
+      "@id": "db://airq/dwh_006/ft_reading_daily",
+      "@type": "prov:Entity",
+      "dct:title": "ft_reading_daily",
+      "rowCount": 0,
+      "dct:description": "Grain: One row per sensor device, per measured parameter, per day.",
+      "measures": [
+        {
+          "name": "cnt_readings",
+          "agg": "SUM",
+          "fully_additive": true
+        },
+        {
+          "name": "sum_data_volume_bytes",
+          "agg": "SUM",
+          "fully_additive": true
+        },
+        {
+          "name": "avg_data_quality",
+          "agg": "AVG"
+        },
+        {
+          "name": "avg_value",
+          "agg": "AVG"
+        },
+        {
+          "name": "cnt_exceed_yellow",
+          "agg": "SUM",
+          "fully_additive": true
+        }
+      ]
+    },
+    {
+      "@id": "db://airq/dwh_006/ft_service_event",
+      "@type": "prov:Entity",
+      "dct:title": "ft_service_event",
+      "rowCount": 22720,
+      "dct:description": "Grain: One row per service event as recorded in OLTP.",
+      "measures": [
+        {
+          "name": "service_cost_eur",
+          "agg": "SUM",
+          "fully_additive": true
+        },
+        {
+          "name": "service_duration_min",
+          "agg": "SUM",
+          "fully_additive": true
+        },
+        {
+          "name": "service_quality_score",
+          "agg": "AVG"
+        },
+        {
+          "name": "underqualified_flag",
+          "agg": "SUM",
+          "fully_additive": true
+        }
+      ]
+    },
+    {
+      "@id": "urn:airq:etl:group:006:2025-10-23T15:59:16Z",
+      "@type": "prov:Activity",
+      "dct:description": "Assignment 1 ETL run for dwh_006",
+      "prov:startedAtTime": "2025-10-23T15:59:16Z",
+      "prov:endedAtTime": "2025-10-23T15:59:16Z",
+      "prov:used": [
+        "file:csv/tb_alert.csv",
+        "oltp://tb_campaign_city",
+        "file:csv/tb_city.csv",
+        "file:csv/tb_country.csv",
+        "file:csv/tb_employee.csv",
+        "oltp://tb_environmental_campaign",
+        "file:csv/tb_param.csv",
+        "file:csv/tb_paramalert.csv",
+        "file:csv/tb_readingevent.csv",
+        "file:csv/tb_readingmode.csv",
+        "file:csv/tb_role.csv",
+        "file:csv/tb_sensordevice.csv",
+        "file:csv/tb_sensortype.csv",
+        "file:csv/tb_serviceevent.csv",
+        "file:csv/tb_servicetype.csv",
+        "file:etl/a1_etl00_ext_campaign_city_resolve.sql",
+        "file:etl/a1_etl01_dim_timeday.sql",
+        "file:etl/a1_etl02_dim_servicetype.sql",
+        "file:etl/a1_etl03_dim_parameter.sql",
+        "file:etl/a1_etl04_dim_technician_role_scd2.sql",
+        "file:etl/a1_etl05_dim_device.sql",
+        "file:etl/a1_etl06_ft_name1.sql",
+        "file:etl/a1_etl07_ft_name2.sql",
+        "file:etl/a1_etl08_ft_service_event.sql"
+      ],
+      "prov:generated": [
+        "db://airq/dwh_006/dim_campaign",
+        "db://airq/dwh_006/dim_device",
+        "db://airq/dwh_006/dim_parameter",
+        "db://airq/dwh_006/dim_reading_mode",
+        "db://airq/dwh_006/dim_sensor_type",
+        "db://airq/dwh_006/dim_servicetype",
+        "db://airq/dwh_006/dim_technician_role",
+        "db://airq/dwh_006/dim_timeday",
+        "db://airq/dwh_006/ft_reading_daily",
+        "db://airq/dwh_006/ft_service_event"
+      ],
+      "prov:wasAssociatedWith": [
+        "urn:person:A",
+        "urn:person:B",
+        "urn:software:jupyter",
+        "urn:software:postgres",
+        "urn:software:os"
+      ],
+      "prov:qualifiedAssociation": [
+        {
+          "@type": "prov:Association",
+          "prov:agent": "urn:person:A",
+          "prov:hadRole": "owner:ft_reading_daily"
+        },
+        {
+          "@type": "prov:Association",
+          "prov:agent": "urn:person:B",
+          "prov:hadRole": "owner:ft_service_event"
+        }
+      ]
+    },
+    {
+      "@id": "urn:person:A",
+      "@type": "prov:Agent",
+      "dct:title": "Halilovic, Kerim"
+    },
+    {
+      "@id": "urn:person:B",
+      "@type": "prov:Agent",
+      "dct:title": "Lukic, Nikola"
+    },
+    {
+      "@id": "urn:software:jupyter",
+      "@type": "prov:SoftwareAgent",
+      "dct:title": "Jupyter Notebook"
+    },
+    {
+      "@id": "urn:software:postgres",
+      "@type": "prov:SoftwareAgent",
+      "dct:title": "PostgreSQL"
+    },
+    {
+      "@id": "urn:software:os",
+      "@type": "prov:SoftwareAgent",
+      "dct:title": "posix"
+    },
+    {
+      "@id": "db://airq/dwh_006/ft_reading_daily#derivation-tb_readingevent",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/ft_reading_daily",
+      "prov:usedEntity": "file:csv/tb_readingevent.csv",
+      "dct:description": "Student A owns Fact 1; these OLTP tables supply its grain, measures and lookups."
+    },
+    {
+      "@id": "db://airq/dwh_006/ft_reading_daily#derivation-tb_paramalert",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/ft_reading_daily",
+      "prov:usedEntity": "file:csv/tb_paramalert.csv",
+      "dct:description": "Student A owns Fact 1; these OLTP tables supply its grain, measures and lookups."
+    },
+    {
+      "@id": "db://airq/dwh_006/ft_reading_daily#derivation-tb_alert",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/ft_reading_daily",
+      "prov:usedEntity": "file:csv/tb_alert.csv",
+      "dct:description": "Student A owns Fact 1; these OLTP tables supply its grain, measures and lookups."
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device#derivation-dim_device-tb_sensordevice",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_device",
+      "prov:usedEntity": "file:csv/tb_sensordevice.csv",
+      "dct:description": "dim_device ← tb_sensordevice"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device#derivation-dim_device-tb_city",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_device",
+      "prov:usedEntity": "file:csv/tb_city.csv",
+      "dct:description": "dim_device ← tb_city"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device#derivation-dim_device-tb_country",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_device",
+      "prov:usedEntity": "file:csv/tb_country.csv",
+      "dct:description": "dim_device ← tb_country"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device#derivation-dim_device-tb_sensortype",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_device",
+      "prov:usedEntity": "file:csv/tb_sensortype.csv",
+      "dct:description": "dim_device ← tb_sensortype"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_parameter#derivation-dim_parameter-tb_param",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_parameter",
+      "prov:usedEntity": "file:csv/tb_param.csv",
+      "dct:description": "dim_parameter ← tb_param"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_sensor_type#derivation-dim_sensor_type-tb_sensortype",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_sensor_type",
+      "prov:usedEntity": "file:csv/tb_sensortype.csv",
+      "dct:description": "dim_sensor_type ← tb_sensortype"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_reading_mode#derivation-dim_reading_mode-tb_readingmode",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_reading_mode",
+      "prov:usedEntity": "file:csv/tb_readingmode.csv",
+      "dct:description": "dim_reading_mode ← tb_readingmode"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_campaign#derivation-dim_campaign-tb_environmental_campaign",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_campaign",
+      "prov:usedEntity": "oltp://tb_environmental_campaign",
+      "dct:description": "dim_campaign ← tb_environmental_campaign"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_campaign#derivation-dim_campaign-tb_campaign_city",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_campaign",
+      "prov:usedEntity": "oltp://tb_campaign_city",
+      "dct:description": "dim_campaign ← tb_campaign_city"
+    },
+    {
+      "@id": "db://airq/dwh_006/ft_service_event#derivation-tb_serviceevent",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/ft_service_event",
+      "prov:usedEntity": "file:csv/tb_serviceevent.csv",
+      "dct:description": "Student B owns Fact 2; these inputs determine its grain and lookups."
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device#derivation-dim_device-tb_sensordevice",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_device",
+      "prov:usedEntity": "file:csv/tb_sensordevice.csv",
+      "dct:description": "dim_device ← tb_sensordevice"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device#derivation-dim_device-tb_city",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_device",
+      "prov:usedEntity": "file:csv/tb_city.csv",
+      "dct:description": "dim_device ← tb_city"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device#derivation-dim_device-tb_country",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_device",
+      "prov:usedEntity": "file:csv/tb_country.csv",
+      "dct:description": "dim_device ← tb_country"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_device#derivation-dim_device-tb_sensortype",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_device",
+      "prov:usedEntity": "file:csv/tb_sensortype.csv",
+      "dct:description": "dim_device ← tb_sensortype"
+    },
+    {
+      "@id": "db://airq/dwh_006/ft_service_event#derivation-dim_service_type-tb_servicetype",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/ft_service_event",
+      "prov:usedEntity": "file:csv/tb_servicetype.csv",
+      "dct:description": "dim_service_type ← tb_servicetype"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_technician_role#derivation-dim_technician_role-tb_employee",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_technician_role",
+      "prov:usedEntity": "file:csv/tb_employee.csv",
+      "dct:description": "dim_technician_role ← tb_employee"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_technician_role#derivation-dim_technician_role-tb_role",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_technician_role",
+      "prov:usedEntity": "file:csv/tb_role.csv",
+      "dct:description": "dim_technician_role ← tb_role"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_campaign#derivation-dim_campaign-tb_environmental_campaign",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_campaign",
+      "prov:usedEntity": "oltp://tb_environmental_campaign",
+      "dct:description": "dim_campaign ← tb_environmental_campaign"
+    },
+    {
+      "@id": "db://airq/dwh_006/dim_campaign#derivation-dim_campaign-tb_campaign_city",
+      "@type": "prov:Derivation",
+      "prov:generatedEntity": "db://airq/dwh_006/dim_campaign",
+      "prov:usedEntity": "oltp://tb_campaign_city",
+      "dct:description": "dim_campaign ← tb_campaign_city"
+    }
+  ]
+}
